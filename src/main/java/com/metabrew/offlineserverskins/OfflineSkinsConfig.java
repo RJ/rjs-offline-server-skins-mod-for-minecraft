@@ -8,6 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.List;
 import java.util.Properties;
 import org.slf4j.Logger;
 
@@ -62,17 +63,11 @@ public final class OfflineSkinsConfig {
 			throw new IllegalStateException("Failed to create config directory for " + configPath, e);
 		}
 
-		Properties defaults = new Properties();
-		defaults.setProperty(KEY_SKIN_URL_TEMPLATE, "http://127.0.0.1/skins/%name%.png");
-		defaults.setProperty(KEY_DEFAULT_MODEL, SkinModel.CLASSIC.id());
-
 		try (Writer writer = Files.newBufferedWriter(configPath, StandardCharsets.UTF_8)) {
-			writer.write("# RJ's Offline Server Skins config\n");
-			writer.write("# Required: supports %name%\n");
-			writer.write("# skin_url_template=http://127.0.0.1/skins/%name%.png\n");
-			writer.write("# Optional: classic or slim\n");
-			writer.write("# default_model=classic\n\n");
-			defaults.store(writer, null);
+			for (String line : defaultConfigLines()) {
+				writer.write(line);
+				writer.write('\n');
+			}
 		} catch (IOException e) {
 			throw new IllegalStateException("Failed to create default config at " + configPath, e);
 		}
@@ -86,6 +81,17 @@ public final class OfflineSkinsConfig {
 
 	public SkinModel defaultModel() {
 		return this.defaultModel;
+	}
+
+	private static List<String> defaultConfigLines() {
+		return List.of(
+			"# RJ's Offline Server Skins config",
+			"# Required: supports %name%",
+			"skin_url_template=http://127.0.0.1/skins/%name%.png",
+			"",
+			"# Optional: classic or slim",
+			"default_model=classic"
+		);
 	}
 
 	public enum SkinModel {
