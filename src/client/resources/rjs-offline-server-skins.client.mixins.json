@@ -1,0 +1,13 @@
+{
+	"required": true,
+	"package": "com.metabrew.offlineserverskins.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"PlayerSkinProviderLoadHandlerMixin",
+		"PlayerSkinProviderMixin",
+		"TextureUrlCheckerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

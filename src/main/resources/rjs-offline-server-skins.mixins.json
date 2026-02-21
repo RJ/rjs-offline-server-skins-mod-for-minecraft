@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.metabrew.offlineserverskins.mixin",
+	"compatibilityLevel": "JAVA_21",
+	"mixins": [
+		"ConnectedClientDataMixin",
+		"PlayerManagerMixin",
+		"ServerLoginNetworkHandlerMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
