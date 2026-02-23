@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.UUID;
 
 public final class TexturesPayloadBuilder {
@@ -14,7 +15,10 @@ public final class TexturesPayloadBuilder {
 		Objects.requireNonNull(template, "template");
 		Objects.requireNonNull(playerName, "playerName");
 		String encodedName = URLEncoder.encode(playerName, StandardCharsets.UTF_8);
-		return template.replace("%name%", encodedName);
+		String randomRevision = "rev" + Integer.toHexString(ThreadLocalRandom.current().nextInt());
+		return template
+			.replace("%rev%", randomRevision)
+			.replace("%name%", encodedName);
 	}
 
 	public String buildEncodedPayload(GameProfile profile, String url, OfflineSkinsConfig.SkinModel model) {

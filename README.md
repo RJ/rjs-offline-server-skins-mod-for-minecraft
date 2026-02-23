@@ -6,8 +6,12 @@ Server config file specifies schema for player skins:
 
 ```
 # config/rjs_offline_server_skins.txt
-skin_url_template=http://your.ip.or.server/skins/%name%.png
+skin_url_template=http://your.ip.or.server/skins/%rev%/%name%.png
 ```
+
+Template tokens:
+- `%name%` (required): in-game player name
+- `%rev%` (optional): random revision string generated on each injection for cache-busting
 
 You are responsible for hosting that webserver and skin files. In my case, that is on the same
 machine that hosts the minecraft server, and I use a LAN ip address.

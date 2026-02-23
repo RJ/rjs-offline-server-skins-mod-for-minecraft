@@ -87,7 +87,8 @@ public final class OfflineSkinsConfig {
 		return List.of(
 			"# RJ's Offline Server Skins config",
 			"# Required: supports %name%",
-			"skin_url_template=http://127.0.0.1/skins/%name%.png",
+			"# Optional token: %rev% (random cache-busting path segment)",
+			"skin_url_template=http://127.0.0.1/skins/%rev%/%name%.png",
 			"",
 			"# Optional: classic or slim",
 			"default_model=classic"
