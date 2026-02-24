@@ -42,8 +42,7 @@ public final class OfflineSkinsConfig {
 		String template = properties.getProperty(KEY_SKIN_URL_TEMPLATE, "").trim();
 		if (template.isEmpty()) {
 			throw new IllegalStateException(
-				"Missing required key '" + KEY_SKIN_URL_TEMPLATE + "' in " + configPath
-			);
+					"Missing required key '" + KEY_SKIN_URL_TEMPLATE + "' in " + configPath);
 		}
 
 		String modelString = properties.getProperty(KEY_DEFAULT_MODEL, SkinModel.CLASSIC.id()).trim();
@@ -85,14 +84,13 @@ public final class OfflineSkinsConfig {
 
 	private static List<String> defaultConfigLines() {
 		return List.of(
-			"# RJ's Offline Server Skins config",
-			"# Required: supports %name%",
-			"# Optional token: %rev% (random cache-busting path segment)",
-			"skin_url_template=http://127.0.0.1/skins/%rev%/%name%.png",
-			"",
-			"# Optional: classic or slim",
-			"default_model=classic"
-		);
+				"# RJ's Offline Server Skins config",
+				"# Required: supports %name%",
+				"# Optional token: %rev% (random cache-busting needed in the basename)",
+				"skin_url_template=http://10.0.67.1:8080/assets/players/%name%-%rev%.png",
+				"",
+				"# Optional: classic or slim",
+				"default_model=classic");
 	}
 
 	public enum SkinModel {
@@ -118,8 +116,7 @@ public final class OfflineSkinsConfig {
 				return SLIM;
 			}
 			throw new IllegalStateException(
-				"Invalid default_model '" + raw + "'. Expected 'classic' or 'slim'."
-			);
+					"Invalid default_model '" + raw + "'. Expected 'classic' or 'slim'.");
 		}
 	}
 }

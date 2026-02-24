@@ -6,7 +6,7 @@ Server config file specifies schema for player skins:
 
 ```
 # config/rjs_offline_server_skins.txt
-skin_url_template=http://your.ip.or.server/skins/%rev%/%name%.png
+skin_url_template=http://your.ip.or.server/skins/%name%-%rev%.png
 ```
 
 Template tokens:
