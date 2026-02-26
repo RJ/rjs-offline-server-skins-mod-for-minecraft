@@ -22,3 +22,9 @@ Players connect, and the clientside part of the mod makes sure to bypass the nor
 skin signing checks, to allow unsigned skins to be loaded from any URL.
 
 This allows you to manage skins in a purely offline way without internet access at all.
+
+### Dev notes
+
+```bash
+./gradlew runClient --args="--username=Bob"
+```
